@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs - Job Search Intelligence</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 20px; }
+        .job-card { margin-bottom: 15px; }
+        .score-badge { font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">Job Search Intelligence</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Dashboard</a>
+                <a class="nav-link active" href="/jobs">Jobs</a>
+                <a class="nav-link" href="/emails">Emails</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="mb-4">{{ page_title }}</h1>
+
+        {% if no_data %}
+        <div class="alert alert-info">
+            <p>No jobs data available. Run the demo first:</p>
+            <code>python main.py --demo</code>
+        </div>
+        {% else %}
+
+        <div class="mb-3">
+            <a href="/jobs" class="btn btn-sm btn-outline-secondary">All</a>
+            <a href="/jobs?status=approved" class="btn btn-sm btn-outline-success">Approved</a>
+            <a href="/jobs?status=applied" class="btn btn-sm btn-outline-primary">Applied</a>
+            <a href="/jobs?status=interview" class="btn btn-sm btn-outline-warning">Interview</a>
+            <a href="/jobs?status=rejected" class="btn btn-sm btn-outline-danger">Rejected</a>
+            <a href="/jobs?status=filtered_out" class="btn btn-sm btn-outline-secondary">Filtered Out</a>
+        </div>
+
+        <p class="text-muted">Showing {{ jobs|length }} job(s)</p>
+
+        {% for job in jobs %}
+        <div class="card job-card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h5 class="card-title">{{ job.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ job.company }}</h6>
+                        <p class="card-text">
+                            <small>
+                                📍 {{ job.location or 'Location not specified' }}
+                                {% if job.relevance_score %}
+                                &nbsp;|&nbsp; 📊 Score: {{ "%.2f"|format(job.relevance_score) }}
+                                {% endif %}
+                            </small>
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        {% if job.status == 'approved' %}
+                        <span class="badge bg-success">{{ job.status }}</span>
+                        {% elif job.status == 'applied' %}
+                        <span class="badge bg-primary">{{ job.status }}</span>
+                        {% elif job.status == 'interview' %}
+                        <span class="badge bg-warning">{{ job.status }}</span>
+                        {% elif job.status == 'rejected' %}
+                        <span class="badge bg-danger">{{ job.status }}</span>
+                        {% elif job.status == 'filtered_out' %}
+                        <span class="badge bg-secondary">{{ job.status }}</span>
+                        {% else %}
+                        <span class="badge bg-light text-dark">{{ job.status }}</span>
+                        {% endif %}
+
+                        {% if job.sponsorship_status %}
+                        <br><br>
+                        {% if job.sponsorship_status == 'positive' %}
+                        <span class="badge bg-success">🌍 OPT Friendly</span>
+                        {% elif job.sponsorship_status == 'disqualified' %}
+                        <span class="badge bg-danger">❌ No Sponsorship</span>
+                        {% elif job.sponsorship_status == 'neutral' %}
+                        <span class="badge bg-secondary">❓ Unknown</span>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if jobs|length == 0 %}
+        <div class="alert alert-secondary">
+            No jobs found with this filter.
+        </div>
+        {% endif %}
+
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+From: noreply@ashbyhq.com
+Subject: Coding Assessment - Backend Engineer at CloudTech
+
+Hi,
+
+Thank you for your application to the Backend Engineer - Entry Level position at CloudTech!
+
+As the next step, we'd like you to complete a coding assessment. This will help us better understand your technical skills.
+
+Assessment Details:
+- Platform: HackerRank
+- Time Limit: 90 minutes
+- Topics: Data structures, algorithms, system design
+- Deadline: Complete within 5 days
+
+Click here to start the assessment: [LINK]
+
+Please reach out if you have any questions.
+
+Best regards,
+CloudTech Engineering Team

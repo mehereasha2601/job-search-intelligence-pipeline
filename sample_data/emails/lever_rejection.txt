@@ -1,0 +1,15 @@
+From: noreply@lever.co
+Subject: Unfortunately, we're moving forward with other candidates
+
+Dear Applicant,
+
+Thank you for taking the time to apply for the ML Engineer position at AI Startup.
+
+We appreciate your interest in our company. Unfortunately, we have decided not to move forward with your application at this time. We received a large number of applications and had to make some difficult decisions.
+
+We'll keep your resume on file for future opportunities.
+
+Best of luck in your job search.
+
+Regards,
+AI Startup Team

@@ -1,0 +1,17 @@
+From: sarah.recruiter@amazon.com
+Subject: Following up on your Amazon application
+
+Hello,
+
+I hope this email finds you well! I came across your profile and wanted to reach out about the Software Development Engineer I role we have open on the AWS team.
+
+I noticed you recently applied, and I wanted to personally follow up. Your background in distributed systems looks like a great fit for what we're looking for.
+
+Would you be interested in a brief call this week to discuss the opportunity?
+
+Looking forward to hearing from you!
+
+Best,
+Sarah Johnson
+Technical Recruiter, AWS
+Amazon

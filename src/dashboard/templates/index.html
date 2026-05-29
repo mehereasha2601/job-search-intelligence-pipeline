@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search Intelligence Pipeline</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 20px; }
+        .metric-card { margin-bottom: 20px; }
+        .badge-custom { font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">Job Search Intelligence</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Dashboard</a>
+                <a class="nav-link" href="/jobs">Jobs</a>
+                <a class="nav-link" href="/emails">Emails</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="mb-4">📊 Dashboard</h1>
+
+        {% if no_data %}
+        <div class="alert alert-info">
+            <h4>No Data Yet</h4>
+            <p>Run the demo to generate sample data:</p>
+            <code>python main.py --demo</code>
+        </div>
+        {% else %}
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card metric-card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Jobs</h5>
+                        <h2 class="display-4">{{ stats.total }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card text-center border-success">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">Approved</h5>
+                        <h2 class="display-4">{{ stats.approved }}</h2>
+                        <a href="/jobs?status=approved" class="btn btn-sm btn-outline-success">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card text-center border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Applied</h5>
+                        <h2 class="display-4">{{ stats.applied }}</h2>
+                        <a href="/jobs?status=applied" class="btn btn-sm btn-outline-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card text-center border-warning">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">Interview</h5>
+                        <h2 class="display-4">{{ stats.interview }}</h2>
+                        <a href="/jobs?status=interview" class="btn btn-sm btn-outline-warning">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Pipeline Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tr>
+                                <td>Discovered</td>
+                                <td><span class="badge bg-secondary">{{ stats.discovered }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Approved</td>
+                                <td><span class="badge bg-success">{{ stats.approved }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Applied</td>
+                                <td><span class="badge bg-primary">{{ stats.applied }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Interview</td>
+                                <td><span class="badge bg-warning">{{ stats.interview }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Rejected</td>
+                                <td><span class="badge bg-danger">{{ stats.rejected }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Filtered Out</td>
+                                <td><span class="badge bg-light text-dark">{{ stats.filtered_out }}</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Quick Links</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="/jobs" class="btn btn-outline-primary">View All Jobs</a>
+                            <a href="/emails" class="btn btn-outline-info">View Email Classifications</a>
+                            <a href="/jobs?status=approved" class="btn btn-outline-success">Approved Jobs</a>
+                            <a href="/jobs?status=interview" class="btn btn-outline-warning">Interview Pipeline</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

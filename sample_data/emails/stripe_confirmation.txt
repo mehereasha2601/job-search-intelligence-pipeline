@@ -1,0 +1,13 @@
+From: recruiting@stripe.com
+Subject: Your Stripe Application
+
+Hi there,
+
+Thank you for applying to the Backend Engineer - Entry Level role at Stripe.
+
+We wanted to let you know that we received your application and our team is currently reviewing candidates. We appreciate your interest in joining Stripe!
+
+We'll be in touch soon.
+
+Best,
+Stripe Recruiting

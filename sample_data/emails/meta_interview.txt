@@ -1,0 +1,16 @@
+From: eng-recruiting@meta.com
+Subject: Next Steps - ML Engineer Role
+
+Hello,
+
+Congratulations! We'd like to invite you to the next stage of our interview process for the ML Engineer - New Grad position at Meta.
+
+This will be a technical phone screen with one of our ML engineers. The interview will last approximately 60 minutes and cover:
+- Machine learning fundamentals
+- Python coding
+- System design basics
+
+Please reply with your availability for next week (Monday-Friday, 9am-5pm PT).
+
+Best,
+Meta University Recruiting
