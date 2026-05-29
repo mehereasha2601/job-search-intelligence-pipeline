@@ -24,6 +24,11 @@ from src.tracker import TrackerDatabase, StatusUpdater, export_demo_results
 
 logger = get_logger(__name__)
 
+# Create app instance for deployment (e.g., Render, Heroku)
+# This allows `uvicorn main:app` to work
+from src.dashboard.app import create_app
+app = create_app()
+
 
 def run_demo():
     """Run demo mode with synthetic data."""
