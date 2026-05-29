@@ -5,123 +5,497 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Search Intelligence Pipeline</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { padding-top: 20px; }
-        .metric-card { margin-bottom: 20px; }
-        .badge-custom { font-size: 0.9em; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+        
+        /* Navbar */
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-link {
+            color: #4a5568 !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: #f7fafc;
+            color: #667eea !important;
+        }
+        
+        /* Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        /* Page Title */
+        .page-title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Metric Cards */
+        .metrics-row {
+            margin-bottom: 2rem;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .metric-card.featured::before {
+            background: linear-gradient(90deg, #48bb78 0%, #38a169 100%);
+        }
+        
+        .metric-card.primary::before {
+            background: linear-gradient(90deg, #4299e1 0%, #3182ce 100%);
+        }
+        
+        .metric-card.warning::before {
+            background: linear-gradient(90deg, #ed8936 0%, #dd6b20 100%);
+        }
+        
+        .metric-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .metric-icon.purple {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .metric-icon.green {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+        
+        .metric-icon.blue {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+        }
+        
+        .metric-icon.orange {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            color: white;
+        }
+        
+        .metric-label {
+            color: #718096;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-change {
+            font-size: 0.85rem;
+            color: #48bb78;
+            font-weight: 500;
+        }
+        
+        .metric-change.negative {
+            color: #f56565;
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+        
+        .info-card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .info-card-title i {
+            color: #667eea;
+        }
+        
+        /* Pipeline Table */
+        .pipeline-table {
+            margin: 0;
+        }
+        
+        .pipeline-table tr {
+            border-bottom: 1px solid #e2e8f0;
+            transition: background 0.2s ease;
+        }
+        
+        .pipeline-table tr:hover {
+            background: #f7fafc;
+        }
+        
+        .pipeline-table tr:last-child {
+            border-bottom: none;
+        }
+        
+        .pipeline-table td {
+            padding: 1rem 0.5rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .pipeline-table td:first-child {
+            color: #2d3748;
+            font-weight: 600;
+        }
+        
+        /* Badges */
+        .badge-custom {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .badge-custom.badge-purple {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .badge-custom.badge-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+        
+        .badge-custom.badge-primary {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+        }
+        
+        .badge-custom.badge-warning {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            color: white;
+        }
+        
+        .badge-custom.badge-danger {
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            color: white;
+        }
+        
+        .badge-custom.badge-light {
+            background: #f7fafc;
+            color: #4a5568;
+        }
+        
+        /* Quick Links */
+        .quick-link {
+            display: block;
+            padding: 1rem 1.25rem;
+            background: #f7fafc;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 0.75rem;
+        }
+        
+        .quick-link:hover {
+            background: white;
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .quick-link i {
+            margin-right: 0.75rem;
+            width: 20px;
+        }
+        
+        /* Alert */
+        .alert-custom {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .alert-custom h4 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .metric-card, .info-card {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .metric-card:nth-child(1) { animation-delay: 0.1s; }
+        .metric-card:nth-child(2) { animation-delay: 0.2s; }
+        .metric-card:nth-child(3) { animation-delay: 0.3s; }
+        .metric-card:nth-child(4) { animation-delay: 0.4s; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .metric-value {
+                font-size: 2rem;
+            }
+            
+            .main-container {
+                padding: 0 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="/">Job Search Intelligence</a>
-            <div class="navbar-nav">
-                <a class="nav-link" href="/">Dashboard</a>
-                <a class="nav-link" href="/jobs">Jobs</a>
-                <a class="nav-link" href="/emails">Emails</a>
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-briefcase me-2"></i>Job Search Intelligence
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            <i class="fas fa-chart-line me-2"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/jobs">
+                            <i class="fas fa-briefcase me-2"></i>Jobs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/emails">
+                            <i class="fas fa-envelope me-2"></i>Emails
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <h1 class="mb-4">📊 Dashboard</h1>
+    <!-- Main Container -->
+    <div class="main-container">
+        <h1 class="page-title">
+            <i class="fas fa-chart-line me-3"></i>Dashboard
+        </h1>
+        <p class="page-subtitle">Track your job search pipeline and application status</p>
 
         {% if no_data %}
-        <div class="alert alert-info">
-            <h4>No Data Yet</h4>
-            <p>Run the demo to generate sample data:</p>
-            <code>python main.py --demo</code>
+        <div class="alert-custom">
+            <h4><i class="fas fa-info-circle me-2"></i>No Data Yet</h4>
+            <p class="mb-2">Run the demo to generate sample data and see your dashboard in action!</p>
+            <code style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 8px; display: inline-block; margin-top: 0.5rem;">python main.py --demo</code>
         </div>
         {% else %}
 
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card metric-card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Jobs</h5>
-                        <h2 class="display-4">{{ stats.total }}</h2>
+        <!-- Metrics Row -->
+        <div class="row metrics-row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="metric-card">
+                    <div class="metric-icon purple">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="metric-label">Total Jobs</div>
+                    <div class="metric-value">{{ stats.total }}</div>
+                    <div class="metric-change">
+                        <i class="fas fa-arrow-up me-1"></i>Tracked
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card metric-card text-center border-success">
-                    <div class="card-body">
-                        <h5 class="card-title text-success">Approved</h5>
-                        <h2 class="display-4">{{ stats.approved }}</h2>
-                        <a href="/jobs?status=approved" class="btn btn-sm btn-outline-success">View</a>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="metric-card featured">
+                    <div class="metric-icon green">
+                        <i class="fas fa-check-circle"></i>
                     </div>
+                    <div class="metric-label">Approved</div>
+                    <div class="metric-value">{{ stats.approved }}</div>
+                    <a href="/jobs?status=approved" style="text-decoration: none; color: #48bb78; font-weight: 600; font-size: 0.9rem;">
+                        View Jobs <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card metric-card text-center border-primary">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Applied</h5>
-                        <h2 class="display-4">{{ stats.applied }}</h2>
-                        <a href="/jobs?status=applied" class="btn btn-sm btn-outline-primary">View</a>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="metric-card primary">
+                    <div class="metric-icon blue">
+                        <i class="fas fa-paper-plane"></i>
                     </div>
+                    <div class="metric-label">Applied</div>
+                    <div class="metric-value">{{ stats.applied }}</div>
+                    <a href="/jobs?status=applied" style="text-decoration: none; color: #4299e1; font-weight: 600; font-size: 0.9rem;">
+                        View Applications <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card metric-card text-center border-warning">
-                    <div class="card-body">
-                        <h5 class="card-title text-warning">Interview</h5>
-                        <h2 class="display-4">{{ stats.interview }}</h2>
-                        <a href="/jobs?status=interview" class="btn btn-sm btn-outline-warning">View</a>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="metric-card warning">
+                    <div class="metric-icon orange">
+                        <i class="fas fa-users"></i>
                     </div>
+                    <div class="metric-label">Interview</div>
+                    <div class="metric-value">{{ stats.interview }}</div>
+                    <a href="/jobs?status=interview" style="text-decoration: none; color: #ed8936; font-weight: 600; font-size: 0.9rem;">
+                        View Pipeline <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
                 </div>
             </div>
         </div>
 
+        <!-- Info Cards Row -->
         <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Pipeline Status</h5>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-sm">
-                            <tr>
-                                <td>Discovered</td>
-                                <td><span class="badge bg-secondary">{{ stats.discovered }}</span></td>
-                            </tr>
-                            <tr>
-                                <td>Approved</td>
-                                <td><span class="badge bg-success">{{ stats.approved }}</span></td>
-                            </tr>
-                            <tr>
-                                <td>Applied</td>
-                                <td><span class="badge bg-primary">{{ stats.applied }}</span></td>
-                            </tr>
-                            <tr>
-                                <td>Interview</td>
-                                <td><span class="badge bg-warning">{{ stats.interview }}</span></td>
-                            </tr>
-                            <tr>
-                                <td>Rejected</td>
-                                <td><span class="badge bg-danger">{{ stats.rejected }}</span></td>
-                            </tr>
-                            <tr>
-                                <td>Filtered Out</td>
-                                <td><span class="badge bg-light text-dark">{{ stats.filtered_out }}</span></td>
-                            </tr>
-                        </table>
-                    </div>
+            <div class="col-lg-6 mb-4">
+                <div class="info-card">
+                    <h3 class="info-card-title">
+                        <i class="fas fa-list-check"></i>
+                        Pipeline Status
+                    </h3>
+                    <table class="pipeline-table" style="width: 100%;">
+                        <tr>
+                            <td><i class="fas fa-circle text-secondary me-2" style="font-size: 0.5rem;"></i>Discovered</td>
+                            <td class="text-end"><span class="badge-custom badge-light">{{ stats.discovered }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-circle text-success me-2" style="font-size: 0.5rem;"></i>Approved</td>
+                            <td class="text-end"><span class="badge-custom badge-success">{{ stats.approved }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-circle text-primary me-2" style="font-size: 0.5rem;"></i>Applied</td>
+                            <td class="text-end"><span class="badge-custom badge-primary">{{ stats.applied }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-circle text-warning me-2" style="font-size: 0.5rem;"></i>Interview</td>
+                            <td class="text-end"><span class="badge-custom badge-warning">{{ stats.interview }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-circle text-danger me-2" style="font-size: 0.5rem;"></i>Rejected</td>
+                            <td class="text-end"><span class="badge-custom badge-danger">{{ stats.rejected }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-circle me-2" style="font-size: 0.5rem; color: #cbd5e0;"></i>Filtered Out</td>
+                            <td class="text-end"><span class="badge-custom badge-light">{{ stats.filtered_out }}</span></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Quick Links</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-grid gap-2">
-                            <a href="/jobs" class="btn btn-outline-primary">View All Jobs</a>
-                            <a href="/emails" class="btn btn-outline-info">View Email Classifications</a>
-                            <a href="/jobs?status=approved" class="btn btn-outline-success">Approved Jobs</a>
-                            <a href="/jobs?status=interview" class="btn btn-outline-warning">Interview Pipeline</a>
-                        </div>
-                    </div>
+            <div class="col-lg-6 mb-4">
+                <div class="info-card">
+                    <h3 class="info-card-title">
+                        <i class="fas fa-bolt"></i>
+                        Quick Actions
+                    </h3>
+                    <a href="/jobs" class="quick-link">
+                        <i class="fas fa-briefcase"></i>View All Jobs
+                    </a>
+                    <a href="/emails" class="quick-link">
+                        <i class="fas fa-envelope"></i>Email Classifications
+                    </a>
+                    <a href="/jobs?status=approved" class="quick-link">
+                        <i class="fas fa-check-circle"></i>Approved Jobs
+                    </a>
+                    <a href="/jobs?status=interview" class="quick-link">
+                        <i class="fas fa-users"></i>Interview Pipeline
+                    </a>
                 </div>
             </div>
         </div>
