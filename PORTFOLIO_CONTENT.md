@@ -55,6 +55,8 @@ Ready-to-use content for your portfolio website. Choose the format that matches 
                 <span class="badge">SQLAlchemy</span>
                 <span class="badge">Jinja2</span>
                 <span class="badge">Bootstrap 5</span>
+                <span class="badge">Font Awesome</span>
+                <span class="badge">Modern CSS</span>
                 <span class="badge">pytest</span>
                 <span class="badge">SQLite</span>
                 <span class="badge">Render</span>
@@ -77,8 +79,8 @@ Ready-to-use content for your portfolio website. Choose the format that matches 
                     <p>Classify emails as applied, rejected, interview, assessment, or follow-up with 90%+ confidence.</p>
                 </div>
                 <div class="feature">
-                    <h4>📊 Dashboard Visualization</h4>
-                    <p>FastAPI dashboard with metrics cards, job pipeline, and email classifications.</p>
+                    <h4>🎨 Modern UI/UX</h4>
+                    <p>Beautiful gradient design with glassmorphism, smooth animations, and mobile-responsive layouts.</p>
                 </div>
             </div>
         </div>
@@ -97,16 +99,16 @@ Ready-to-use content for your portfolio website. Choose the format that matches 
             <h3>📸 Screenshots</h3>
             <div class="screenshots-grid">
                 <figure>
-                    <img src="screenshots/dashboard.png" alt="Dashboard Overview">
-                    <figcaption>Dashboard with metrics cards and pipeline stats</figcaption>
+                    <img src="https://github.com/mehereasha2601/job-search-intelligence-pipeline/blob/main/docs/screenshots/dashboard.png?raw=true" alt="Dashboard Overview">
+                    <figcaption>Modern dashboard with gradient metrics, glassmorphism navbar, and pipeline visualization</figcaption>
                 </figure>
                 <figure>
-                    <img src="screenshots/jobs.png" alt="Jobs List">
-                    <figcaption>Jobs list with sponsorship signals and filters</figcaption>
+                    <img src="https://github.com/mehereasha2601/job-search-intelligence-pipeline/blob/main/docs/screenshots/jobs.png?raw=true" alt="Jobs List">
+                    <figcaption>Beautiful job cards with interactive filters, sponsorship badges, and relevance scores</figcaption>
                 </figure>
                 <figure>
-                    <img src="screenshots/emails.png" alt="Email Classifications">
-                    <figcaption>Email classifications with confidence scores</figcaption>
+                    <img src="https://github.com/mehereasha2601/job-search-intelligence-pipeline/blob/main/docs/screenshots/emails.png?raw=true" alt="Email Classifications">
+                    <figcaption>Email classifications with gradient category badges and confidence indicators</figcaption>
                 </figure>
             </div>
         </div>
@@ -174,7 +176,7 @@ I built a job search intelligence pipeline that converts messy job-search signal
 
 ## 🛠️ Tech Stack
 
-`Python` `FastAPI` `SQLAlchemy` `Jinja2` `Bootstrap` `pytest` `SQLite` `Render`
+`Python` `FastAPI` `SQLAlchemy` `Jinja2` `Bootstrap 5` `Font Awesome` `Modern CSS` `pytest` `SQLite` `Render`
 
 ## ✨ Key Features
 
@@ -225,17 +227,18 @@ Presentation Layer (FastAPI dashboard)
 2. **Privacy by Design:** Built public version with synthetic data from day one
 3. **Product Thinking:** Focused on real pain points vs feature bloat
 4. **Testing Best Practices:** Comprehensive test suite with fixtures and mocking
+5. **Modern UI/UX:** Gradient design, glassmorphism effects, and smooth animations create professional polish
 
 ## 📸 Screenshots
 
-![Dashboard Overview](screenshots/dashboard.png)
-*Dashboard with metrics cards and pipeline visualization*
+![Dashboard Overview](https://github.com/mehereasha2601/job-search-intelligence-pipeline/blob/main/docs/screenshots/dashboard.png?raw=true)
+*Modern dashboard with gradient metrics, glassmorphism navbar, and animated pipeline stats*
 
-![Jobs List](screenshots/jobs.png)
-*Jobs list with sponsorship badges and status filters*
+![Jobs List](https://github.com/mehereasha2601/job-search-intelligence-pipeline/blob/main/docs/screenshots/jobs.png?raw=true)
+*Beautiful job cards with interactive filters, sponsorship badges, and hover effects*
 
-![Email Classifications](screenshots/emails.png)
-*Email classifications with confidence scores and extracted entities*
+![Email Classifications](https://github.com/mehereasha2601/job-search-intelligence-pipeline/blob/main/docs/screenshots/emails.png?raw=true)
+*Email classifications with gradient category badges and confidence score indicators*
 
 ---
 
@@ -293,6 +296,8 @@ DEMO: https://job-search-intelligence-pipeline.onrender.com
     "SQLAlchemy",
     "Jinja2",
     "Bootstrap 5",
+    "Font Awesome",
+    "Modern CSS (Gradients & Animations)",
     "pytest",
     "SQLite",
     "Render"
@@ -310,16 +315,16 @@ DEMO: https://job-search-intelligence-pipeline.onrender.com
   ],
   "screenshots": [
     {
-      "url": "screenshots/dashboard.png",
-      "caption": "Dashboard with metrics cards and pipeline stats"
+      "url": "https://github.com/mehereasha2601/job-search-intelligence-pipeline/blob/main/docs/screenshots/dashboard.png?raw=true",
+      "caption": "Modern dashboard with gradient metrics, glassmorphism navbar, and pipeline visualization"
     },
     {
-      "url": "screenshots/jobs.png",
-      "caption": "Jobs list with sponsorship signals"
+      "url": "https://github.com/mehereasha2601/job-search-intelligence-pipeline/blob/main/docs/screenshots/jobs.png?raw=true",
+      "caption": "Beautiful job cards with interactive filters and sponsorship badges"
     },
     {
-      "url": "screenshots/emails.png",
-      "caption": "Email classifications with confidence scores"
+      "url": "https://github.com/mehereasha2601/job-search-intelligence-pipeline/blob/main/docs/screenshots/emails.png?raw=true",
+      "caption": "Email classifications with gradient category badges and confidence scores"
     }
   ]
 }
@@ -344,24 +349,27 @@ During my OPT job search, I identified three major pain points and built a solut
 ✅ Solution:
 • Smart filtering by role level & sponsorship signals
 • Email classification with 90%+ accuracy
-• Pipeline tracking with FastAPI dashboard
+• Modern dashboard with gradient design & animations
+• Pipeline tracking with FastAPI + SQLite
 
-🛠️ Built with: Python | FastAPI | SQLAlchemy | pytest
+🛠️ Built with: Python | FastAPI | SQLAlchemy | Bootstrap 5 | pytest
 
 📊 Results:
 • 95%+ test coverage (33 tests)
 • 85% precision detecting OPT-friendly jobs
+• 90%+ email classification accuracy
 • 80% time savings in tracking
 
 This project showcases:
 ✓ Backend development with RESTful APIs
 ✓ NLP for email classification
 ✓ Database design with SQLAlchemy ORM
+✓ Modern UI/UX with gradients & glassmorphism
 ✓ Test-driven development
 ✓ Privacy-first design principles
 
 🔗 Live Demo: [YOUR-RENDER-URL]
-📂 GitHub: [YOUR-GITHUB-URL]
+📂 GitHub: https://github.com/mehereasha2601/job-search-intelligence-pipeline
 
 #Python #FastAPI #JobSearch #SoftwareEngineering #OPT #NewGrad #Portfolio
 ```
@@ -404,7 +412,8 @@ Classifies recruiting emails into 5 categories:
 
 Backend: Python + FastAPI
 Database: SQLAlchemy + SQLite
-Frontend: Jinja2 + Bootstrap 5
+Frontend: Jinja2 + Bootstrap 5 + Font Awesome
+UI/UX: Gradient design, glassmorphism, animations
 Testing: pytest (95%+ coverage, 33 tests)
 Deploy: Render (free tier)
 

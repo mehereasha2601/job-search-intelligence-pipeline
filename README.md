@@ -81,7 +81,8 @@ A **Job Search Intelligence Pipeline** that:
 | **Language** | Python 3.11+ |
 | **Data Processing** | pandas, SQLAlchemy |
 | **Backend** | FastAPI, Uvicorn |
-| **Frontend** | Jinja2 Templates, Bootstrap 5 |
+| **Frontend** | Jinja2 Templates, Bootstrap 5, Font Awesome |
+| **UI/UX** | Modern gradient design, glassmorphism, animations |
 | **Database** | SQLite |
 | **Testing** | pytest, pytest-cov |
 | **Optional LLM** | Groq API (for advanced filtering) |
@@ -189,13 +190,16 @@ pytest tests/test_filters.py
 ## 📊 Screenshots
 
 ### Dashboard Overview
-*Screenshot placeholder - metrics cards showing pipeline stats*
+![Dashboard](docs/screenshots/dashboard.png)
+*Modern dashboard with gradient metrics cards showing pipeline stats and quick actions*
 
 ### Jobs List with Sponsorship Signals
-*Screenshot placeholder - table with OPT-friendly badges*
+![Jobs List](docs/screenshots/jobs.png)
+*Job cards with status filters, relevance scores, and OPT-friendly sponsorship badges*
 
 ### Email Classifications
-*Screenshot placeholder - categorized recruiting emails*
+![Email Classifications](docs/screenshots/emails.png)
+*Categorized recruiting emails with confidence scores and extracted company/role data*
 
 ---
 
